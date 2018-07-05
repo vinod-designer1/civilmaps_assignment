@@ -1,6 +1,37 @@
 
 # README
 
+## Changes Made For Assignment
+
+To Files:
+examples/viewer.html
+	Changes for navigation change to FlightControls
+
+	viewer.setNavigationMode(Potree.FirstPersonControls);
+    viewer.fpControls.lockElevation = false;
+
+
+    Added path for file, CROS Support will be available for all browser which have 'withCredentials' property in XMLHttpRequest
+
+	let cloudPath = "https://s3.amazonaws.com/cm-persistent/005f4058214ac90fd121963da5b6ab6689122af0/octrees/20180511.034342245/cloud.js";
+		//"../pointclouds/vol_total/cloud.js"
+		Potree.loadPointCloud(cloudPath, "sigeom.sa", e => {
+
+src/Pottree.js
+	Added following imports
+
+	export * from "./navigation/FirstPersonControls.js";
+	export * from "./navigation/EarthControls.js";
+	export * from "./navigation/OrbitControls.js";
+
+	this helps to make FirstPersonControls Event available in viewer.html which helps us to set naviagtion mode. Added more for ability to switch naviagtion mode from the custom js file.
+
+
+
+
+
+## PotTree Docs
+
 * [Getting Started](./docs/getting_started.md)
 
 ## About

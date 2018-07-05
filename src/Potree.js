@@ -53,6 +53,11 @@ export * from "./utils/TransformationTool.js";
 export * from "./utils/Volume.js";
 export * from "./utils/VolumeTool.js";
 
+export * from "./navigation/FirstPersonControls.js";
+export * from "./navigation/EarthControls.js";
+export * from "./navigation/OrbitControls.js";
+
+
 export * from "./viewer/viewer.js";
 export * from "./viewer/Scene.js";
 

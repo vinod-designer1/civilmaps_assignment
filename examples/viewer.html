@@ -47,6 +47,8 @@
 		viewer.setFOV(60);
 		viewer.setPointBudget(1*1000*1000);
 		viewer.loadSettingsFromURL();
+		viewer.setNavigationMode(Potree.FirstPersonControls);
+		viewer.fpControls.lockElevation = false;
 		
 		viewer.setDescription("Point cloud courtesy of <a target='_blank' href='https://www.sigeom.ch/'>sigeom sa</a>");
 		
@@ -56,9 +58,12 @@
 			$("#menu_clipping").next().show();
 			viewer.toggleSidebar();
 		});
+
 		
 		// Load and add point cloud to scene
-		Potree.loadPointCloud("../pointclouds/vol_total/cloud.js", "sigeom.sa", e => {
+		let cloudPath = "https://s3.amazonaws.com/cm-persistent/005f4058214ac90fd121963da5b6ab6689122af0/octrees/20180511.034342245/cloud.js";
+		//"../pointclouds/vol_total/cloud.js"
+		Potree.loadPointCloud(cloudPath, "sigeom.sa", e => {
 			let scene = viewer.scene;
 			let pointcloud = e.pointcloud;
 			
@@ -66,7 +71,7 @@
 			material.size = 1;
 			material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
 			material.shape = Potree.PointShape.SQUARE;
-			
+
 			scene.addPointCloud(pointcloud);
 			
 			//scene.view.position.set(589974.341, 231698.397, 986.146);
